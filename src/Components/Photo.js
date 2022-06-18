@@ -1,11 +1,8 @@
 import React, { Component } from "react";
 class Photo extends Component {
   render() {
-    return 
-    <div>
-        {this.props.posts.map(post)}
-    </div>
-    
+    // eslint-disable-next-line no-unreachable
+    return <figure className="figure"></figure> 
   }
 }
 

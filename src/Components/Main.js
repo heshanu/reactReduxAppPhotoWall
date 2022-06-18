@@ -20,7 +20,7 @@ const posts = [
     description: "On a vacation!",
     imageLink:
       "https://fm.cnbc.com/applications/cnbc.com/resources/img/editorial/2017/08/24/104670887-VacationExplainsTHUMBWEB.1910x1000.jpg",
-  }
+  },
 ];
 
 class Main extends Component {
@@ -28,7 +28,7 @@ class Main extends Component {
     return (
       <div>
         <Title title="PhotoWall" />
-        <Photowall posts={posts}/>
+        <Photowall posts={posts} />
       </div>
     );
   }
