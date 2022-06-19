@@ -40,9 +40,12 @@ import { BrowserRouter } from "react-router-dom";
 //ReactDOM.render(<Main />, document.getElementById("root"));
 //const root = ReactDOM.createRoot(document.getElementById('root'))
 
+//browser router
 ReactDOM.render(
   <BrowserRouter>
     <Main />
   </BrowserRouter>,
   document.getElementById("root")
 );
+
+

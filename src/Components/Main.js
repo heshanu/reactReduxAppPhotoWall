@@ -3,6 +3,7 @@ import Title from "../Components/Title";
 import Photowall from "../Components/Photowall";
 import PropTypes from "prop-types";
 import AddPhoto from "../Components/AddPhoto";
+import { Route,Routes } from "react-router-dom";
 
 class Main extends Component {
   //added state
@@ -70,28 +71,25 @@ class Main extends Component {
   // }
 
   render() {
-    return (
-      <div>
-        {this.state.screen === "photos" && (
-          <div>
-            <Title title="PhotoWall" />
-            <Photowall
-              posts={this.state.posts}
-              onRemovePhoto={this.removePhoto}
-              onNavigate={this.navigate}
-            />
-          </div>
-        )}
-
-        {this.state.screen === "AddPhoto" && (
-          <div>
-            <AddPhoto />
-          </div>
-        )}
+    return (<div><Routes>
+      <Route path="/" element={
+        <React.Fragment>
+          <Title title="PhotoWall" />
+              <Photowall
+                posts={this.state.posts}
+                onRemovePhoto={this.removePhoto}
+                onNavigate={this.navigate}
+              />
+        </React.Fragment>
+      }/>
+            
+        <Route path="/AddPhoto"  element={<AddPhoto/>} />
+      </Routes>
       </div>
-    );
+    )
   }
 }
+
 
 Photowall.propTypes = {
   posts: PropTypes.array.isRequired,
