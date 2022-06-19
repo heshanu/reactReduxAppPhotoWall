@@ -6,7 +6,8 @@ function Photowall(props) {
   return (
     <div className="photoGrid">
       {props.posts.map((post, index) => (
-        <Photo key={index} post={post} />
+        <Photo key={index} post={post} 
+        onRemovePhoto={props.onRemovePhoto} />
       ))}
     </div>
   );
