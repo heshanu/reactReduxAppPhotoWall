@@ -1,7 +1,8 @@
-import { React, Component } from "react";
+import React, { Component } from "react";
 import Title from "../Components/Title";
 import Photowall from "../Components/Photowall";
-import PropTypes  from "prop-types";
+import PropTypes from "prop-types";
+import AddPhoto from "../Components/AddPhoto";
 
 class Main extends Component {
   //added state
@@ -28,32 +29,73 @@ class Main extends Component {
           imageLink:
             "https://fm.cnbc.com/applications/cnbc.com/resources/img/editorial/2017/08/24/104670887-VacationExplainsTHUMBWEB.1910x1000.jpg",
         },
-      ]
-    }
-    this.removePhoto=this.removePhoto.bind(this);
+      ],
+      screen: "photos", //photos add photos
+    };
+    this.removePhoto = this.removePhoto.bind(this);
+    this.navigate = this.navigate.bind(this);
   }
 
   //update state
   removePhoto(postRemoved) {
     console.log(postRemoved.description);
     this.setState((state) => ({
-      posts: state.posts.filter((post) => post !== postRemoved)
+      posts: state.posts.filter((post) => post !== postRemoved),
     }));
   }
+
+  navigate() {
+    this.setState({
+      screen: "AddPhoto",
+    });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    alert("re-render");
+    console.log(prevState.posts);
+    console.log(this.state);
+  }
+
+  //lifecycle
+  // componentDidMount() {
+  //   const data = SimulationFromDB();
+  //   this.setState({
+  //     posts: data,
+  //   });
+  //   console.log("component didmount");
+  // }
+
+  // componentDidUpdate() {
+  //   alert("rerender");
+  // }
 
   render() {
     return (
       <div>
-        <Title title="PhotoWall" />
-        <Photowall posts={this.state.posts} onRemovePhoto={this.removePhoto} />
+        {this.state.screen === "photos" && (
+          <div>
+            <Title title="PhotoWall" />
+            <Photowall
+              posts={this.state.posts}
+              onRemovePhoto={this.removePhoto}
+              onNavigate={this.navigate}
+            />
+          </div>
+        )}
+
+        {this.state.screen === "AddPhoto" && (
+          <div>
+            <AddPhoto />
+          </div>
+        )}
       </div>
     );
   }
 }
 
-Photowall.propTypes={
-    posts:PropTypes.array.isRequired,
-    onRemovePhoto:PropTypes.func.isRequired
-}
+Photowall.propTypes = {
+  posts: PropTypes.array.isRequired,
+  onRemovePhoto: PropTypes.func.isRequired,
+};
 
 export default Main;

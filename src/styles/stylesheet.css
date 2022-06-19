@@ -111,21 +111,24 @@ body {
   outline: none;
   resize: vertical;
 }
+
 .addIcon {
-  background: url("https://image.flaticon.com/icons/svg/60/60740.svg") center
-    no-repeat;
-  background-size: contain;
-  padding: 40px;
+  background-size: cover;
+  padding: 50px 50px 50px 50px;
   display: table;
   margin: 20px auto;
-  border: none;
+  border-width: 5px;
+  border-radius: 100px;
+  background-image: url("../styles/img/plus-solid.svg");
 }
+
 .button-container {
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 button,
 .button {
   border: 2px solid #f2f2f2;

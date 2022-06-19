@@ -1,9 +1,14 @@
-import { React, Component } from "react";
-import Main from './Components/Main';
-import './styles/stylesheet.css';
-//import { ReactDOM } from "react";
-var ReactDOM = require("react-dom");
+import React from "react";
+import Main from "./Components/Main";
+import "./styles/stylesheet.css";
+import ReactDOM from "react-dom";
 
+//import "./node_modules/font-awesome/css/font-awesome.min.css";
+import "../node_modules/font-awesome/css/font-awesome.min.css";
+//var ReactDOM = require('react-dom');
+import { BrowserRouter } from "react-router-dom";
+//import { DOM } from "react-dom";
+//
 //const tasks = ["taek up trash", "shovel the drilivery", "walk the dog"];
 // const element = React.createElement(
 //   "ol",
@@ -32,6 +37,12 @@ var ReactDOM = require("react-dom");
 //   }
 // }
 
+//ReactDOM.render(<Main />, document.getElementById("root"));
+//const root = ReactDOM.createRoot(document.getElementById('root'))
 
-ReactDOM.render(<Main/>, document.getElementById("root"));
-//ReactDOM.render(element1, document.getElementById("root1"));
+ReactDOM.render(
+  <BrowserRouter>
+    <Main />
+  </BrowserRouter>,
+  document.getElementById("root")
+);
