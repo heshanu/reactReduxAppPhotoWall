@@ -3,9 +3,9 @@ import Title from "../Components/Title";
 import Photowall from "../Components/Photowall";
 import PropTypes from "prop-types";
 import AddPhoto from "../Components/AddPhoto";
-import { Route,Routes } from "react-router-dom";
-
+import { Route,Routes} from "react-router-dom";
 class Main extends Component {
+  
   //added state
   constructor() {
     super();
@@ -57,6 +57,11 @@ class Main extends Component {
     console.log(this.state);
   }
 
+  addPhoto(postSubmitted){
+    this.setState(state=>({
+      posts:state.posts.concat([postSubmitted])
+    }));
+  }
   //lifecycle
   // componentDidMount() {
   //   const data = SimulationFromDB();
@@ -72,7 +77,7 @@ class Main extends Component {
 
   render() {
     return (<div><Routes>
-      <Route path="/" element={
+      <Route exact path="/" element={
         <React.Fragment>
           <Title title="PhotoWall" />
               <Photowall
@@ -83,7 +88,12 @@ class Main extends Component {
         </React.Fragment>
       }/>
             
-        <Route path="/AddPhoto"  element={<AddPhoto/>} />
+        <Route path="/AddPhoto" element={<AddPhoto onAddPhoto={(addedPost)=>{
+          //console.log(addedPost);
+          this.addPhoto(addedPost);
+          window.location ="/"; 
+          
+        }}/>}/>
       </Routes>
       </div>
     )
